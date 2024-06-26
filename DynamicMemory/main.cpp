@@ -5,6 +5,7 @@ using namespace std;
 
 void FillRand(int arr[], const int n);
 void Print(int arr[], const int n);
+int* push_back(int arr[], int& n, const int value);
 
 void main()
 {
@@ -19,23 +20,9 @@ void main()
 
 	int value;
 	cout << "Введите добавляемое значение: "; cin >> value;
-	//Создаём буфферный массив нужного размера:
-	int* buffer = new int[n + 1];
-	//Копируем значения элементов исходного массива в буферный:
-	for (int i = 0; i < n; i++)
-	{
-		buffer[i] = arr[i];
-	}
-	//Удаляем исходный массив:
-	delete[] arr;
-	//Подменяем адрес в указателе 'arr' адресом нового массива:
-	arr = buffer;
-	//Только полсе всего этого можно добавить значение в конец массива:
-	arr[n] = value;
-	//После добавления элемента в конец массива,количество его элементов увеличивается на 1:
-	n++;
-
+	arr = push_back(arr, n, value);
 	Print(arr, n);
+
 	delete[]arr;
 	//Memory leaks
 }
@@ -56,4 +43,23 @@ void Print(int arr[], const int n)
 		//Обращение к элементам массива через оператор индексирования []
 	}
 	cout << endl;
+}
+int* push_back(int arr[], int& n, const int value)
+{
+	//Создаём буфферный массив нужного размера:
+	int* buffer = new int[n + 1];
+	//Копируем значения элементов исходного массива в буферный:
+	for (int i = 0; i < n; i++)
+	{
+		buffer[i] = arr[i];
+	}
+	//Удаляем исходный массив:
+	delete[] arr;
+	//Подменяем адрес в указателе 'arr' адресом нового массива:
+	arr = buffer;
+	//Только полсе всего этого можно добавить значение в конец массива:
+	arr[n] = value;
+	//После добавления элемента в конец массива,количество его элементов увеличивается на 1:
+	n++;
+	return arr;
 }
