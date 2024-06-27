@@ -35,18 +35,15 @@ template<typename T>T** insert_row(T** arr, int& rows, const int cols, int posit
 template<typename T>T** pop_row_back(T** arr, int& rows, const int cols);
 template<typename T>void push_col_back(T** arr, const int rows, int& cols);
 
-#define DYNAMIC_MEMORY_1
-//#define DYNAMIC_MEMORY_2
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 //#define PERFORMANCE_CHECK
 
 void main()
 {
 	setlocale(LC_ALL, "");
 
-	typedef double DataType;	//Директива typedef создает псевдоним для существующего типа данных
-	//	typedef existing_type alias;
-	//			existing_type - существующий тип
-	//			alias		  - псевдоним
+	typedef double DataType;
 
 #ifdef DYNAMIC_MEMORY_1
 	//		new
@@ -172,7 +169,6 @@ void main()
 	delete[] arr;
 #endif // SYNTAX
 }
-
 template<typename T>T** Allocate(const int rows, const int cols)
 {
 	T** arr = new T * [rows];
@@ -190,7 +186,6 @@ template<typename T>void Clear(T** arr, const int rows)
 	}
 	delete[] arr;
 }
-
 void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
@@ -218,7 +213,6 @@ void FillRand(char arr[], const int n, int minRand, int maxRand)
 		//Обращение к элементам массива через арифметику указателей и оператор разыменования
 	}
 }
-
 void FillRand(int** arr, const int rows, const int cols, int minRand, int maxRand)
 {
 	for (int i = 0; i < rows; i++)
@@ -251,7 +245,6 @@ void FillRand(char** arr, const int rows, const int cols, int minRand, int maxRa
 		}
 	}
 }
-
 template<typename T>void Print(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -321,7 +314,6 @@ template<typename T>T* insert(T arr[], int& n, const T value, const int index)
 	n++;
 	return buffer;
 }
-
 template<typename T>T* pop_back(T arr[], int& n)
 {
 	T* buffer = new T[--n];
@@ -348,7 +340,6 @@ template<typename T>T* erase(T arr[], int& n, const int index)
 	delete[] arr;
 	return buffer;
 }
-
 template<typename T>T** push_row_back(T** arr, int& rows, const int cols)
 {
 #ifdef NEVER_DO_IN_THIS_WAY
@@ -399,7 +390,6 @@ template<typename T>T** insert_row(T** arr, int& rows, const int cols, int posit
 	rows++;
 	return buffer;
 }
-
 template<typename T>T** pop_row_back(T** arr, int& rows, const int cols)
 {
 	T** buffer = new T * [--rows];
