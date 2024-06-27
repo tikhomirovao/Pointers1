@@ -35,8 +35,8 @@ template<typename T>T** insert_row(T** arr, int& rows, const int cols, int posit
 template<typename T>T** pop_row_back(T** arr, int& rows, const int cols);
 template<typename T>void push_col_back(T** arr, const int rows, int& cols);
 
-//#define DYNAMIC_MEMORY_1
-#define DYNAMIC_MEMORY_2
+#define DYNAMIC_MEMORY_1
+//#define DYNAMIC_MEMORY_2
 //#define PERFORMANCE_CHECK
 
 void main()
@@ -52,7 +52,6 @@ void main()
 	//		new
 	int n = 5;
 	cout << "Введите размер массива: "; cin >> n;
-
 
 	DataType* arr = new DataType[n];
 
@@ -155,31 +154,15 @@ void main()
 #ifdef SYNTAX
 	int rows = 3;
 	int cols = 4;
-
-	///////////////////////////////////////////////////////////////
-	///		   Объявление двумерного динамического массива		///
-	///////////////////////////////////////////////////////////////
-
 	//1) Создаем массив указателей:
 	int** arr = new int* [rows];
-
 	//2) Выделяем память под строки:
 	for (int i = 0; i < rows; i++)
 	{
 		arr[i] = new int[cols];
 	}
-
-	///////////////////////////////////////////////////////////////
-	///	Обращение к элементам двумерного динамического массива	///
-	///////////////////////////////////////////////////////////////
-
 	FillRand(arr, rows, cols);
 	Print(arr, rows, cols);
-
-	///////////////////////////////////////////////////////////////
-	///		   Удаление двумерного динамического массива		///
-	///////////////////////////////////////////////////////////////
-
 	//1) Удаляем строки:
 	for (int i = 0; i < rows; i++)
 	{
@@ -188,7 +171,6 @@ void main()
 	//2) Удаляем массив указателей:
 	delete[] arr;
 #endif // SYNTAX
-
 }
 
 template<typename T>T** Allocate(const int rows, const int cols)
