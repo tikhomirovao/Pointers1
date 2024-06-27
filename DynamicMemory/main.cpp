@@ -423,5 +423,4 @@ void Clear(int** arr, const int rows)
 	}
 	// 2) Удаляем массив указателей
 	delete[] arr;
-	arr = nullptr;
 }
